@@ -14,6 +14,9 @@ import java.util.List;
 
 
 
+
+
+
 public class MySQLAdsDao implements Ads {
     private Connection connection = null;
 
