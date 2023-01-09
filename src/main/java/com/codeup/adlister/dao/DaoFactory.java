@@ -15,8 +15,9 @@ public class DaoFactory {
     }
 
     public static Users getUsersDao() {
+        Config config = new Config();
         if (usersDao == null) {
-            usersDao = new MySQLUsersDao();
+            usersDao = new MySQLUsersDao(config);
         }
         return usersDao;
     }
