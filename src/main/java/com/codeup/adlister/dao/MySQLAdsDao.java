@@ -10,12 +10,6 @@ import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
-
-
-
-
-
-
 public class MySQLAdsDao implements Ads {
     private Connection connection = null;
 
@@ -47,7 +41,8 @@ public class MySQLAdsDao implements Ads {
     public List<Ad> userAds(Long userId){
         PreparedStatement stmt = null;
         try {
-            stmt = connection.prepareStatement("SELECT * FROM ads WHERE user_id = " + userId );
+            stmt = connection.prepareStatement("SELECT * FROM ads WHERE user_id = ?" );
+            stmt.setLong(1, userId);
             ResultSet rs = stmt.executeQuery();
             return createAdsFromResults(rs);
         } catch (SQLException e) {
@@ -72,6 +67,17 @@ public class MySQLAdsDao implements Ads {
         }
     }
 
+    public List<Ad> getAdById(Long adId) {
+        String query = "SELECT * FROM ads WHERE id=?";
+        try {
+            PreparedStatement p = connection.prepareStatement(query);
+            p.setLong(1, adId);
+            ResultSet rs = p.executeQuery();
+            return createAdsFromResults(rs);
+        } catch (SQLException e) {
+            throw new RuntimeException("Error when accessing Ad id.");
+        }
+    }
     private Ad extractAd(ResultSet rs) throws SQLException {
         return new Ad(
             rs.getLong("id"),

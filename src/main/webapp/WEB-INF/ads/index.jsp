@@ -80,9 +80,13 @@
     <h1>Here Are all the ads!</h1>
 
     <c:forEach var="ad" items="${ads}">
-        <div class="col-md-6">
-            <h2>${ad.title}</h2>
+        <div class="col-md-6" id="">
+            <h2 >${ad.title}</h2>
             <p>${ad.description}</p>
+            <form action="/ads/ad-details" method="post">
+                <input type="text" name="ad.id" value="${ad.id}">
+                <input type="submit" value="view-ad">
+            </form>
         </div>
     </c:forEach>
 </div>
