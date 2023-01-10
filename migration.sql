@@ -42,6 +42,8 @@ CREATE TABLE ads_and_categories (
                                         ON DELETE CASCADE
 );
 
+
+
 show tables;
 
 
