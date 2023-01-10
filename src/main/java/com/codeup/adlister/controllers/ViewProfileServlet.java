@@ -25,14 +25,7 @@ public class ViewProfileServlet extends HttpServlet {
         Long userId = (Long) request.getSession().getAttribute("userId");
         Config config = new Config();
         List<Ad> userAds = new MySQLAdsDao(config).userAds(userId);
-        String html = "";
-        for (int i = 0; i < userAds.size(); i++){
-            html += "<h2> Ad ID: " + userAds.get(i).getId() + "</h2>" +
-                    "<h2> Ad Title" + userAds.get(i).getTitle() + "</h2>" +
-                    "<h2> Ad Description" + userAds.get(i).getDescription() + "</h2><br>";
-        }
-
-        request.setAttribute("userAds", (String) html);
+        request.setAttribute("userAds", userAds);
 
         request.getRequestDispatcher("/WEB-INF/profile.jsp").forward(request, response);
     }
