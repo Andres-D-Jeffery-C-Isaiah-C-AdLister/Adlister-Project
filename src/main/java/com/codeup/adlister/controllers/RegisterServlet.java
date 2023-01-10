@@ -22,11 +22,14 @@ public class RegisterServlet extends HttpServlet {
         String password = request.getParameter("password");
         String passwordConfirmation = request.getParameter("confirm_password");
 
+        User checkUser = DaoFactory.getUsersDao().findByUsername(username);
+
         // validate input
         boolean inputHasErrors = username.isEmpty()
             || email.isEmpty()
             || password.isEmpty()
-            || (! password.equals(passwordConfirmation));
+            || (! password.equals(passwordConfirmation)
+            || checkUser != null);
 
         if (inputHasErrors) {
             response.sendRedirect("/register");

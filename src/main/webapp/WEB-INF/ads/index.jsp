@@ -58,6 +58,11 @@
             cursor: pointer;
         }
 
+        #searchAds {
+            height: 1em;
+            width: 4em;
+        }
+
 
     </style>
 </head>
@@ -77,7 +82,24 @@
 
 
 <div class="container">
+    <form action="/search" method="POST">
+        <div class="form-group">
+            <label for="search">Search Ads</label>
+            <input id="search" name="search" class="form-control" type="text">
+        </div>
+        <div>
+            <input type="submit" class="btn btn-info btn-block" value="Search">
+        </div>
+    </form>
+</div>
+
+<div class="container">
     <h1>Here Are all the ads!</h1>
+
+<%--    <label for="site-search">Search the site:</label>--%>
+<%--    <input type="search" id="site-search" name="q">--%>
+
+<%--    <button>Search</button>--%>
 
     <c:forEach var="ad" items="${ads}">
         <div class="col-md-6" id="">

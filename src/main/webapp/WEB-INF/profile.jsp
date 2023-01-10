@@ -1,3 +1,4 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
@@ -7,7 +8,7 @@
 
     <style>
 
-        li, a{
+        header li, a{
             font-size: 16px;
             color: white;
             text-decoration: none;
@@ -49,19 +50,68 @@
             transition: all .3s ease-in;
         }
 
-        button{
+        .logout{
             padding: 5px 20px  ;
             background-color: #5bc0de;
             border:none;
             border-radius: 50px;
             cursor: pointer;
         }
+        /*nav bar ends*/
+
+        .box{
+            width: 50%
+        }
+
+        .sell{
+            padding: 5px 20px  ;
+            background-color: #FFB200;
+            border:none;
+            border-radius: 50px;
+            cursor: pointer;
+            color: black;
+        }
+
+        /*ads start*/
+        .card{
+            display: grid;
+
+            grid-template-columns: auto;
+            grid-template-rows: 150px 90px ;
+            grid-template-areas: "image" "text";
+            background: gainsboro;
+            border-radius: 18px;
+            text-align: justify;
+            color: snow;
+            transition: 0.5s;
+            cursor: pointer;
+            margin: 50px 15px;
+            border: 8px solid black;
+        }
+
+        .card-text{
+            grid-area: text;
+            padding: 15px;
+            background-color: #041b31;
+        }
+
+        .card-text h2, p{
+            margin: 0;
+        }
+
+        .card-text h2{
+            color: #5bc0de;
+        }
 
 
     </style>
+
+
+
 </head>
 <body>
 <%--    <jsp:include page="/WEB-INF/partials/navbar.jsp" />--%>
+<%--navbar starts--%>
     <header>
         <a class="logo" href="">The Rug Plug</a>
         <nav>
@@ -70,18 +120,37 @@
                 <li><a href="/ads">Local Ads</a></li>
             </ul>
         </nav>
-        <a href="/logout" class="logout"><button>Logout</button></a>
+        <a href="/logout" ><button class="logout">Logout</button></a>
     </header>
+<%--navbar ends--%>
 
 
-
-
+<%--ads display starts--%>
     <div class="container">
-        <h1>Welcome, ${sessionScope.user.username}!</h1>
+        <div>
+            <div class="box">
+                <h1>Welcome, ${sessionScope.user.username}!</h1>
+            </div>
+            <div class="box">
+                <a href="/ads/create"><button class="sell">Sell</button></a>
+            </div>
+        </div>
+
+        <c:forEach var="ad" items="${userAds}">
+            <div class="col-md-3">
+                <div class="card">
+                    <div class="card-text">
+                        <h2>${ad.title}</h2>
+                        <p>${ad.description}</p>
+                    </div>
+                </div>
+            </div>
+        </c:forEach>
     </div>
-    <div>
-        ${userAds}
-    </div>
+<%--ads display ends--%>
+
+
+
 
 </body>
 </html>
