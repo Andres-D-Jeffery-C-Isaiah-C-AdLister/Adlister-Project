@@ -5,7 +5,7 @@
         <jsp:param name="title" value="Register For Our Site!" />
     </jsp:include>
 </head>
-<body>
+ <body>
     <jsp:include page="partials/navbar.jsp" />
     <div class="container">
         <h1>Please fill in your information.</h1>
