@@ -15,11 +15,11 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.util.List;
 
-@WebServlet(name = "controllers.SingleAdServlet", urlPatterns = "/ads/ad-details")
-public class SingleAdServlet extends HttpServlet {
+@WebServlet(name = "controllers.ProfileSingleAdServlet", urlPatterns = "/ads/profile-ad-details")
+public class ProfileSingleAdServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        String adId = request.getParameter("ad.id");
-        System.out.println(adId);
+        String adId = request.getParameter("myAd.id");
+//        System.out.println(adId);
         Config config = new Config();
         Ad newAd = new MySQLAdsDao(config).getAdById(Long.parseLong(adId)).get(0);
         String title = newAd.getTitle();
@@ -35,8 +35,6 @@ public class SingleAdServlet extends HttpServlet {
         request.setAttribute("getDescription", description);
         request.setAttribute("ad_id", ad_id);
 
-        request.getRequestDispatcher("/WEB-INF/ads/single-ad.jsp").forward(request, response);
+        request.getRequestDispatcher("/WEB-INF/ads/profile-single-ad.jsp").forward(request, response);
     }
-
 }
-

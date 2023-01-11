@@ -27,6 +27,7 @@ public class ViewProfileServlet extends HttpServlet {
         List<Ad> userAds = new MySQLAdsDao(config).userAds(userId);
         request.setAttribute("userAds", userAds);
 
+
         request.getRequestDispatcher("/WEB-INF/profile.jsp").forward(request, response);
     }
 }

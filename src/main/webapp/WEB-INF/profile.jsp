@@ -94,8 +94,7 @@
             grid-area: text;
             padding: 15px;
             background-color: #041b31;
-
-
+            height: 100%
         }
 
         .card-text h2, p{
@@ -175,8 +174,8 @@
                     <div class="card-text">
                         <h2 >${ad.title}</h2>
                         <p>${ad.description}</p>
-                        <form   id="${ad.id}" class="itemId" action="/ads/ad-details" method="post">
-                            <input class="itemId" type="text" name="ad.id" value="${ad.id}">
+                        <form   id="${ad.id}" class="itemId" action="/ads/profile-ad-details" method="post">
+                            <input class="itemId" type="text" name="myAd.id" value="${ad.id}">
                         </form>
                         <button id="cardbtn" form="${ad.id}" type="submit">+</button>
                     </div>
