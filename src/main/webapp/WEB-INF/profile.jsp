@@ -59,9 +59,17 @@
         }
         /*nav bar ends*/
 
+        .profile-menu{
+            display: flex;
+            align-items: center;
+        }
 
-        .box{
-            width: 50%
+        .box-one{
+            width: 70%
+        }
+
+        .box-two, .box-three{
+            width: 15%;
         }
 
         .sell{
@@ -73,6 +81,13 @@
             color: black;
         }
 
+        hr{
+            width: 70%;
+            height: 2px;
+            color: darkgray;
+            background-color: darkgray;
+            margin-bottom: 60px;
+        }
         .myads-title{
             margin-left: 30px;
         }
@@ -156,21 +171,19 @@
 
 <%--ads display starts--%>
     <div class="container">
-        <div>
-            <div class="box">
+        <div class="profile-menu">
+            <div class="box box-one">
                 <h1>Welcome, ${sessionScope.user.username}!</h1>
             </div>
-            <div class="box">
+            <div class="box box-two">
                 <a href="/profile/update"><button class="sell">Update Profile</button></a>
             </div>
-            <div class="box">
-                <h2>Here are your ads:</h2>
-            </div>
-            <div class="box">
+            <div class="box box-three">
                 <a href="/ads/create"><button class="sell">Sell</button></a>
             </div>
-
         </div>
+
+        <hr >
 
         <h2 class="myads-title">My Ads:</h2>
         <c:forEach var="ad" items="${userAds}">
