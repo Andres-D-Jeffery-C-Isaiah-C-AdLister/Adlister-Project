@@ -73,6 +73,10 @@
             color: black;
         }
 
+        .myads-title{
+            margin-left: 30px;
+        }
+
         /*ads start*/
         .card{
 
@@ -97,15 +101,16 @@
             height: 100%
         }
 
-        .card-text h2, p{
+        .card-text h3, p{
             margin: 0;
         }
 
-        .card-text h2{
+        .card-text h3{
             color: #5bc0de;
         }
 
-        #cardbtn{
+
+        #card-btn{
             margin-top: 30px;
             padding: 0;
             height: 20px;
@@ -118,11 +123,14 @@
             align-items: center;
 
         }
+        /*ads end*/
 
+        /*this hides the form in card*/
         .itemId{
             display: none;
         }
-        /*ads start*/
+        /*.*/
+
 
 
     </style>
@@ -164,27 +172,17 @@
 
         </div>
 
-<%--        <c:forEach var="ad" items="${userAds}">--%>
-<%--            <div class="col-md-3">--%>
-<%--                <div class="card">--%>
-<%--                    <div class="card-text">--%>
-<%--                        <h2>${ad.title}</h2>--%>
-<%--                        <p>${ad.description}</p>--%>
-<%--                    </div>--%>
-<%--                </div>--%>
-<%--            </div>--%>
-<%--        </c:forEach>--%>
-        <h2>My Ads:</h2>
+        <h2 class="myads-title">My Ads:</h2>
         <c:forEach var="ad" items="${userAds}">
             <div class="col-md-3">
                 <div class="card">
                     <div class="card-text">
-                        <h2 >${ad.title}</h2>
+                        <h3 >${ad.title}</h3>
                         <p>${ad.description}</p>
                         <form   id="${ad.id}" class="itemId" action="/ads/profile-ad-details" method="post">
                             <input class="itemId" type="text" name="myAd.id" value="${ad.id}">
                         </form>
-                        <button id="cardbtn" form="${ad.id}" type="submit">+</button>
+                        <button id="card-btn" form="${ad.id}" type="submit">+</button>
                     </div>
                 </div>
             </div>
