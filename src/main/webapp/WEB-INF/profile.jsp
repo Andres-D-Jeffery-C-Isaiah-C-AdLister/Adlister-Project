@@ -153,8 +153,15 @@
                 <h1>Welcome, ${sessionScope.user.username}!</h1>
             </div>
             <div class="box">
+                <a href="/profile/update"><button class="sell">Update Profile</button></a>
+            </div>
+            <div class="box">
+                <h2>Here are your ads:</h2>
+            </div>
+            <div class="box">
                 <a href="/ads/create"><button class="sell">Sell</button></a>
             </div>
+
         </div>
 
 <%--        <c:forEach var="ad" items="${userAds}">--%>
