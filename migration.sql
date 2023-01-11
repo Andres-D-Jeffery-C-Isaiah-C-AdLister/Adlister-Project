@@ -40,6 +40,10 @@ CREATE TABLE ads_and_categories (
     PRIMARY KEY (ads_and_categories_id)
 );
 
-show tables;
+select * from ads;
+select * from users;
+#
+# delete from users where id = 7 ;
+# select * from users;
 
-
+# if nothing is inputed it will take me to ads/create

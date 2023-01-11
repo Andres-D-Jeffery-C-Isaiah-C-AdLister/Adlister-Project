@@ -1,3 +1,4 @@
+<%@ page import="java.io.PrintWriter" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
@@ -80,6 +81,16 @@
 
 
     <div class="container">
+
+        <% String msg;
+            if (session.getAttribute("msg") != null) {
+                response.setContentType("text/html");
+                PrintWriter output = response.getWriter();
+                msg = (String) session.getAttribute("msg");
+                output.print("<p style='color:red;'> " + msg + " </p>");
+            }
+        %>
+
         <h1 class="title">Log In</h1>
         <p class="title">Please enter your login and password</p>
         <form action="/login" method="POST">
