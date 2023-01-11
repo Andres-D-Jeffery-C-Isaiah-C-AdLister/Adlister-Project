@@ -22,6 +22,8 @@ public class CreateAdServlet extends HttpServlet {
             .forward(request, response);
     }
 
+
+
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
         String title = request.getParameter("title").trim();
         String description = request.getParameter("description").trim();
