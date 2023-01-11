@@ -28,4 +28,4 @@ VALUES (2, 1),
        (1, 3);
 select * from ads_and_categories;
 
-
+select * from users;
