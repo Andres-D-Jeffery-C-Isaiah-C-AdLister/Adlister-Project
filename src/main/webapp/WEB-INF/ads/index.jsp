@@ -7,7 +7,7 @@
     </jsp:include>
 
     <style>
-
+        /*navbar starts*/
         li, a{
             font-size: 16px;
             color: white;
@@ -50,13 +50,14 @@
             transition: all .3s ease-in;
         }
 
-        button{
+        .logout{
             padding: 5px 20px  ;
             background-color: #5bc0de;
             border:none;
             border-radius: 50px;
             cursor: pointer;
         }
+        /*navbar ends*/
 
         #searchAds {
             height: 1em;
@@ -64,10 +65,62 @@
         }
 
 
+        /*ads start*/
+        .card{
+
+            display: grid;
+            grid-template-columns: auto;
+            grid-template-rows: 200px 140px ;
+            grid-template-areas: "image" "text";
+            background: gainsboro;
+            border-radius: 18px;
+            text-align: justify;
+            color: snow;
+            transition: 0.5s;
+            cursor: pointer;
+            margin: 50px 15px;
+            border: 8px solid black;
+        }
+
+        .card-text{
+            grid-area: text;
+            padding: 15px;
+            background-color: #041b31;
+        }
+
+        .card-text h2, p{
+            margin: 0;
+        }
+
+        .card-text h2{
+            color: #5bc0de;
+        }
+
+        #cardbtn{
+            margin-top: 30px;
+            padding: 0;
+            height: 20px;
+            width: 20px;
+            background-color: limegreen;
+            border: none;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+        }
+
+        .itemId{
+            display: none;
+        }
+        /*ads start*/
+
+
     </style>
 </head>
 <body>
 <%--<jsp:include page="/WEB-INF/partials/navbar.jsp" />--%>
+<%--navbar starts--%>
 <header>
     <a class="logo" href="">The Rug Plug</a>
     <nav>
@@ -76,11 +129,11 @@
             <li><a href="/ads">Local Ads</a></li>
         </ul>
     </nav>
-    <a href="/logout" class="logout"><button>Logout</button></a>
+    <a href="/logout" ><button class="logout">Logout</button></a>
 </header>
+<%--navbar ends--%>
 
-
-
+<%--search form starts--%>
 <div class="container">
     <form action="/search" method="POST">
         <div class="form-group">
@@ -92,7 +145,9 @@
         </div>
     </form>
 </div>
+<%--search form ends--%>
 
+<%--ads display starts--%>
 <div class="container">
     <h1>Here Are all the ads!</h1>
 
@@ -101,17 +156,23 @@
 
 <%--    <button>Search</button>--%>
 
-    <c:forEach var="ad" items="${ads}">
-        <div class="col-md-6" id="">
-            <h2 >${ad.title}</h2>
-            <p>${ad.description}</p>
-            <form action="/ads/ad-details" method="post">
-                <input type="text" name="ad.id" value="${ad.id}">
-                <input type="submit" value="view-ad">
-            </form>
-        </div>
-    </c:forEach>
+        <c:forEach var="ad" items="${ads}">
+            <div class="col-md-3">
+                <div class="card">
+                    <div class="card-text">
+                        <h2 >${ad.title}</h2>
+                        <p>${ad.description}</p>
+                        <form   id="${ad.id}" class="itemId" action="/ads/ad-details" method="post">
+                        <input class="itemId" type="text" name="ad.id" value="${ad.id}">
+                        </form>
+                        <button id="cardbtn" form="${ad.id}" type="submit">+</button>
+                    </div>
+                </div>
+            </div>
+        </c:forEach>
+
 </div>
+<%--ads display ends--%>
 
 </body>
 </html>

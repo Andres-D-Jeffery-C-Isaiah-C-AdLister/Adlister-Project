@@ -1,7 +1,9 @@
 package com.codeup.adlister.dao;
 
 import com.codeup.adlister.models.Ad;
+import com.mysql.cj.jdbc.Driver;
 
+import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -26,6 +28,28 @@ public class ListAdsDao implements Ads {
         ads.add(ad);
         return ad.getId();
     }
+
+    @Override
+    public void delete(Ad deleteAd) {
+        String query = "DELETE FROM ads WHERE VALUES id = ?";
+        try {
+            Config config = new Config();
+            Connection connection;
+            DriverManager.registerDriver(new Driver());
+            connection = DriverManager.getConnection(config.getUrl(), config.getUser(), config.getPassword());
+            PreparedStatement stmt = connection.prepareStatement(query, Statement.RETURN_GENERATED_KEYS);
+
+            stmt.setLong(1,  deleteAd.getId());
+
+            stmt.executeUpdate();
+//            ResultSet rs = stmt.getGeneratedKeys();
+//            rs.next();
+//            return rs.getLong(1);
+        } catch (SQLException e) {
+            throw new RuntimeException("Error creating a new ad.", e);
+        }
+    }
+
 
     private List<Ad> generateAds() {
         List<Ad> ads = new ArrayList<>();

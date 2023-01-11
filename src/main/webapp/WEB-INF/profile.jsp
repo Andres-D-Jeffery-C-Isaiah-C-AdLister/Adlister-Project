@@ -7,7 +7,7 @@
     </jsp:include>
 
     <style>
-
+        /*navbar starts*/
         header li, a{
             font-size: 16px;
             color: white;
@@ -59,6 +59,7 @@
         }
         /*nav bar ends*/
 
+
         .box{
             width: 50%
         }
@@ -74,10 +75,10 @@
 
         /*ads start*/
         .card{
-            display: grid;
 
+            display: grid;
             grid-template-columns: auto;
-            grid-template-rows: 150px 90px ;
+            grid-template-rows: 200px 140px ;
             grid-template-areas: "image" "text";
             background: gainsboro;
             border-radius: 18px;
@@ -93,6 +94,7 @@
             grid-area: text;
             padding: 15px;
             background-color: #041b31;
+            height: 100%
         }
 
         .card-text h2, p{
@@ -102,6 +104,25 @@
         .card-text h2{
             color: #5bc0de;
         }
+
+        #cardbtn{
+            margin-top: 30px;
+            padding: 0;
+            height: 20px;
+            width: 20px;
+            background-color: limegreen;
+            border: none;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+        }
+
+        .itemId{
+            display: none;
+        }
+        /*ads start*/
 
 
     </style>
@@ -143,17 +164,34 @@
 
         </div>
 
+<%--        <c:forEach var="ad" items="${userAds}">--%>
+<%--            <div class="col-md-3">--%>
+<%--                <div class="card">--%>
+<%--                    <div class="card-text">--%>
+<%--                        <h2>${ad.title}</h2>--%>
+<%--                        <p>${ad.description}</p>--%>
+<%--                    </div>--%>
+<%--                </div>--%>
+<%--            </div>--%>
+<%--        </c:forEach>--%>
+        <h2>My Ads:</h2>
         <c:forEach var="ad" items="${userAds}">
             <div class="col-md-3">
                 <div class="card">
                     <div class="card-text">
-                        <h2>${ad.title}</h2>
+                        <h2 >${ad.title}</h2>
                         <p>${ad.description}</p>
+                        <form   id="${ad.id}" class="itemId" action="/ads/profile-ad-details" method="post">
+                            <input class="itemId" type="text" name="myAd.id" value="${ad.id}">
+                        </form>
+                        <button id="cardbtn" form="${ad.id}" type="submit">+</button>
                     </div>
                 </div>
             </div>
         </c:forEach>
     </div>
+
+
 <%--ads display ends--%>
 
 
