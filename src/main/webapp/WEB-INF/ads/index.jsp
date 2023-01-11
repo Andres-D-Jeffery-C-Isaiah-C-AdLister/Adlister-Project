@@ -64,6 +64,10 @@
             width: 4em;
         }
 
+        .allads-title{
+            margin-left: 30px;
+        }
+
 
         /*ads start*/
         .card{
@@ -88,15 +92,15 @@
             background-color: #041b31;
         }
 
-        .card-text h2, p{
+        .card-text h3, p{
             margin: 0;
         }
 
-        .card-text h2{
+        .card-text h3{
             color: #5bc0de;
         }
 
-        #cardbtn{
+        #card-btn{
             margin-top: 30px;
             padding: 0;
             height: 20px;
@@ -149,7 +153,7 @@
 
 <%--ads display starts--%>
 <div class="container">
-    <h1>Here Are all the ads!</h1>
+    <h2 class="allads-title">All Ads:</h2>
 
 <%--    <label for="site-search">Search the site:</label>--%>
 <%--    <input type="search" id="site-search" name="q">--%>
@@ -160,12 +164,12 @@
             <div class="col-md-3">
                 <div class="card">
                     <div class="card-text">
-                        <h2 >${ad.title}</h2>
+                        <h3 >${ad.title}</h3>
                         <p>${ad.description}</p>
                         <form   id="${ad.id}" class="itemId" action="/ads/ad-details" method="post">
                         <input class="itemId" type="text" name="ad.id" value="${ad.id}">
                         </form>
-                        <button id="cardbtn" form="${ad.id}" type="submit">+</button>
+                        <button id="card-btn" form="${ad.id}" type="submit">+</button>
                     </div>
                 </div>
             </div>

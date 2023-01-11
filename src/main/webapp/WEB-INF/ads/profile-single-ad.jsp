@@ -67,6 +67,10 @@
             border-radius: 50px;
             cursor: pointer;
         }
+
+        .itemId{
+            display: none;
+        }
     </style>
 </head>
 <%--navbar starts--%>
@@ -87,10 +91,11 @@
     <h1>ad id: ${ad_id}</h1>
     <h1>description: ${getDescription}</h1>
     <h1>posted by: ${getUserId}</h1>
-    <form    class="itemId" action="/ads/delete-ad" method="post">
+    <form  id="one"  class="itemId" action="/ads/delete-ad" method="post">
         <input class="itemId" type="text" name="deletead" value="${ad_id}">
-        <button id="cardbtn"  type="submit">delete</button>
+        <button class="delete-btn"  type="submit">delete</button>
     </form>
+    <button class="delete-btn"  form="one" type="submit">delete</button>
 
 
 
