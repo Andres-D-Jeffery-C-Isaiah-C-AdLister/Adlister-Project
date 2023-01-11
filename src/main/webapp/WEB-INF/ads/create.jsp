@@ -1,3 +1,4 @@
+<%@ page import="java.io.PrintWriter" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
@@ -7,6 +8,16 @@
 </head>
 <body>
     <div class="container">
+
+        <% String msg;
+            if (session.getAttribute("msg") != null) {
+                response.setContentType("text/html");
+                PrintWriter output = response.getWriter();
+                msg = (String) session.getAttribute("msg");
+                output.print("<p style='color:red;'> " + msg + " </p>");
+            }
+        %>
+
         <h1>Create a new Ad</h1>
         <form action="/ads/create" method="post">
             <div class="form-group">
