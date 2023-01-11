@@ -60,14 +60,14 @@
     }
     /*nav bar ends*/
 
-    .delete-btn{
-        padding: 5px 20px  ;
-        background-color: red;
-        color: white;
-        border:none;
-        border-radius: 50px;
-        cursor: pointer;
-    }
+    /*.delete-btn{*/
+    /*    padding: 5px 20px  ;*/
+    /*    background-color: red;*/
+    /*    color: white;*/
+    /*    border:none;*/
+    /*    border-radius: 50px;*/
+    /*    cursor: pointer;*/
+    /*}*/
     </style>
 </head>
 <%--navbar starts--%>
@@ -88,12 +88,6 @@
             <h1>ad id: ${ad_id}</h1>
             <h1>description: ${getDescription}</h1>
             <h1>posted by: ${getUserId}</h1>
-            <button class="delete-btn">Delete Item</button>
-
-
-
-
-
 
 </body>
 
