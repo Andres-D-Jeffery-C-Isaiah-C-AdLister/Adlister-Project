@@ -22,8 +22,6 @@ public class CreateAdServlet extends HttpServlet {
             .forward(request, response);
     }
 
-
-
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
         String title = request.getParameter("title").trim();
         String description = request.getParameter("description").trim();
@@ -31,7 +29,7 @@ public class CreateAdServlet extends HttpServlet {
         if (!isValid) {
             String msg = "Please fill out all fields.";
             request.getSession().setAttribute("msg", msg);
-            request.getRequestDispatcher("/ads/create");
+            request.getRequestDispatcher("/WEB-INF/ads/create.jsp");
             return;
         }
         User user = (User) request.getSession().getAttribute("user");

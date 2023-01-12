@@ -7,8 +7,8 @@ DROP TABLE IF EXISTS categories;
 
 CREATE TABLE users (
     id INT UNSIGNED NOT NULL AUTO_INCREMENT,
-    username VARCHAR(240) NOT NULL,
-    email VARCHAR(240) NOT NULL,
+    username VARCHAR(240) NOT NULL unique ,
+    email VARCHAR(240) NOT NULL UNIQUE ,
     password VARCHAR(255) NOT NULL,
     PRIMARY KEY (id)
 );
@@ -42,6 +42,7 @@ CREATE TABLE ads_and_categories (
 
 select * from ads;
 select * from users;
+explain users;
 #
 # delete from users where id = 7 ;
 # select * from users;

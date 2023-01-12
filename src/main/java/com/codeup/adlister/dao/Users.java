@@ -11,5 +11,4 @@ public interface Users {
 
     User findById(Long id);
 
-
 }
