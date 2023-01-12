@@ -59,9 +59,17 @@
         }
         /*nav bar ends*/
 
+        .profile-menu{
+            display: flex;
+            align-items: center;
+        }
 
-        .box{
-            width: 50%
+        .box-one{
+            width: 70%
+        }
+
+        .box-two, .box-three{
+            width: 15%;
         }
 
         .sell{
@@ -71,6 +79,17 @@
             border-radius: 50px;
             cursor: pointer;
             color: black;
+        }
+
+        hr{
+            width: 70%;
+            height: 2px;
+            color: darkgray;
+            background-color: darkgray;
+            margin-bottom: 60px;
+        }
+        .myads-title{
+            margin-left: 30px;
         }
 
         /*ads start*/
@@ -97,15 +116,16 @@
             height: 100%
         }
 
-        .card-text h2, p{
+        .card-text h3, p{
             margin: 0;
         }
 
-        .card-text h2{
+        .card-text h3{
             color: #5bc0de;
         }
 
-        #cardbtn{
+
+        #card-btn{
             margin-top: 30px;
             padding: 0;
             height: 20px;
@@ -118,11 +138,14 @@
             align-items: center;
 
         }
+        /*ads end*/
 
+        /*this hides the form in card*/
         .itemId{
             display: none;
         }
-        /*ads start*/
+        /*.*/
+
 
 
     </style>
@@ -148,43 +171,31 @@
 
 <%--ads display starts--%>
     <div class="container">
-        <div>
-            <div class="box">
+        <div class="profile-menu">
+            <div class="box box-one">
                 <h1>Welcome, ${sessionScope.user.username}!</h1>
             </div>
-            <div class="box">
+            <div class="box box-two">
                 <a href="/profile/update"><button class="sell">Update Profile</button></a>
             </div>
-            <div class="box">
-                <h2>Here are your ads:</h2>
-            </div>
-            <div class="box">
+            <div class="box box-three">
                 <a href="/ads/create"><button class="sell">Sell</button></a>
             </div>
-
         </div>
 
-<%--        <c:forEach var="ad" items="${userAds}">--%>
-<%--            <div class="col-md-3">--%>
-<%--                <div class="card">--%>
-<%--                    <div class="card-text">--%>
-<%--                        <h2>${ad.title}</h2>--%>
-<%--                        <p>${ad.description}</p>--%>
-<%--                    </div>--%>
-<%--                </div>--%>
-<%--            </div>--%>
-<%--        </c:forEach>--%>
-        <h2>My Ads:</h2>
+        <hr >
+
+        <h2 class="myads-title">My Ads:</h2>
         <c:forEach var="ad" items="${userAds}">
             <div class="col-md-3">
                 <div class="card">
                     <div class="card-text">
-                        <h2 >${ad.title}</h2>
+                        <h3 >${ad.title}</h3>
                         <p>${ad.description}</p>
                         <form   id="${ad.id}" class="itemId" action="/ads/profile-ad-details" method="post">
                             <input class="itemId" type="text" name="myAd.id" value="${ad.id}">
                         </form>
-                        <button id="cardbtn" form="${ad.id}" type="submit">+</button>
+                        <button id="card-btn" form="${ad.id}" type="submit">+</button>
                     </div>
                 </div>
             </div>
