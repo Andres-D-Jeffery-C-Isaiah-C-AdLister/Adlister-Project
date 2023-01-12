@@ -11,4 +11,6 @@ public interface Ads {
     Long insert(Ad ad);
 
     void delete(Ad deleteAd);
+
+    void updateAd(Ad updatedAd, String updatedTile, String updatedDesc);
 }
