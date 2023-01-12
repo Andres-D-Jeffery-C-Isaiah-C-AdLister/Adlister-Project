@@ -5,14 +5,13 @@
     <jsp:include page="/WEB-INF/partials/head.jsp">
         <jsp:param name="title" value="Please Log In" />
     </jsp:include>
-
+<%--    <link rel="stylesheet" href="src/main/styles/navbar.css">--%>
     <style>
         /*nav bar*/
-        li, a{
+        header li, a{
             font-size: 16px;
             color: white;
             text-decoration: none;
-            text-underline: none;
         }
 
         header{
@@ -26,13 +25,37 @@
         .logo{
             cursor: pointer;
             font-weight: bold;
-            text-underline: none;
+        }
+
+        nav{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .nav-links{
+            padding: 0;
+            margin: 0;
+            list-style: none;
+        }
+
+        .nav-links li{
+            display: inline-block;
+            padding: 0 20px;
         }
 
         header a:hover{
             color: #5bc0de;
             text-decoration: none;
             transition: all .3s ease-in;
+        }
+
+        .logout{
+            padding: 5px 20px  ;
+            background-color: #5bc0de;
+            border:none;
+            border-radius: 50px;
+            cursor: pointer;
         }
         /*nav bar*/
 
@@ -75,7 +98,7 @@
 
             </ul>
         </nav>
-        <a href="" class="logout"></a>
+        <a href="" class=""></a>
     </header>
 
 
