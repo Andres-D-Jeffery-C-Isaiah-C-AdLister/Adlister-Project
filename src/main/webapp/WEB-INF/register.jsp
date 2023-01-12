@@ -7,12 +7,12 @@
     </jsp:include>
 </head>
 
-<style>
 
 
-</style>
 
-<body>
+
+
+ <body>
     <jsp:include page="partials/navbar.jsp" />
 
     <div class="container">

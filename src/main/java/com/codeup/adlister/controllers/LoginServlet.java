@@ -27,6 +27,7 @@ public class LoginServlet extends HttpServlet {
         String username = request.getParameter("username");
         String password = request.getParameter("password");
         User user = DaoFactory.getUsersDao().findByUsername(username);
+
         //error messages are different if the user is found vs not found.
         if (user != null) {
             //created a boolean that sets true if the user's entered password and found user's hashed password match
@@ -43,6 +44,7 @@ public class LoginServlet extends HttpServlet {
                 request.getSession().setAttribute("username", username);
                 request.getRequestDispatcher("/WEB-INF/login.jsp").forward(request, response);
             }
+
         } else {
             //if the entered user is not found, we reload page with this error page.
             String msg = "Sorry, this user is not yet registered.";
