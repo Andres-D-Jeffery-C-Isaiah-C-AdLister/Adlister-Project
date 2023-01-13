@@ -5,18 +5,25 @@
     <jsp:include page="partials/head.jsp">
         <jsp:param name="title" value="Register For Our Site!" />
     </jsp:include>
-
 </head>
 
- <body id="rugImg">
+
+
+
+
+
+ <body>
     <jsp:include page="partials/navbar.jsp" />
+
     <div class="container">
+
+
         <% String msg;
             if (session.getAttribute("msg") != null) {
                 response.setContentType("text/html");
                 PrintWriter output = response.getWriter();
                 msg = (String) session.getAttribute("msg");
-                output.print("<p style='color:white; background-color:#900C3F'> " + msg + " </p>");
+                output.print("<p style='color:red;'> " + msg + " </p>");
             }
         %>
 
@@ -38,7 +45,6 @@
                 <label for="r_confirm_password">Confirm Password</label>
                 <input id="r_confirm_password" name="confirm_password" class="form-control" type="password">
             </div>
-            <span id="Message" ></span>
             <input type="submit" class="btn btn-primary btn-block">
         </form>
     </div>
