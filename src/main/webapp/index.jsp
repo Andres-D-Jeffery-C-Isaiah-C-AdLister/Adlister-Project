@@ -11,7 +11,7 @@
             font-size: 16px;
             color: white;
             text-decoration: none;
-            text-underline: none;
+
         }
 
         header{
@@ -25,7 +25,6 @@
         .logo{
             cursor: pointer;
             font-weight: bold;
-            text-underline: none;
         }
 
         nav{

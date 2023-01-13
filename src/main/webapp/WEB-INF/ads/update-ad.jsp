@@ -1,11 +1,10 @@
-<%@ page import="java.io.PrintWriter" %>
+
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
     <jsp:include page="/WEB-INF/partials/head.jsp">
-        <jsp:param name="title" value="Create a new Ad" />
+        <jsp:param name="title" value="Ad"/>
     </jsp:include>
-
     <style>
         /*navbar starts*/
         header li, a{
@@ -59,44 +58,40 @@
         }
         /*nav bar ends*/
     </style>
+
 </head>
+
 <body>
-<%--navbar starts--%>
-<header>
-    <a class="logo" href="">The Rug Plug</a>
-    <nav>
-        <ul class="nav-links">
-            <li><a href="/profile">My Profile</a></li>
-            <li><a href="/ads">Local Ads</a></li>
-        </ul>
-    </nav>
-    <a href="/logout" ><button class="logout">Logout</button></a>
-</header>
-<%--navbar ends--%>
+    <%--navbar starts--%>
+    <header>
+        <a class="logo" href="">The Rug Plug</a>
+        <nav>
+            <ul class="nav-links">
+                <li><a href="/profile">My Profile</a></li>
+                <li><a href="/ads">Local Ads</a></li>
+            </ul>
+        </nav>
+        <a href="/logout" ><button class="logout">Logout</button></a>
+    </header>
+    <%--navbar ends--%>
 
+    <%--update-form starts--%>
     <div class="container">
-
-        <% String msg;
-            if (session.getAttribute("msg") != null) {
-                response.setContentType("text/html");
-                PrintWriter output = response.getWriter();
-                msg = (String) session.getAttribute("msg");
-                output.print("<p style='color:red;'> " + msg + " </p>");
-            }
-        %>
-
-        <h1>Create a new Ad</h1>
-        <form action="/ads/create" method="post">
+        <h1>Update Ad</h1>
+        <form action="/ads/update" method="post">
             <div class="form-group">
-                <label for="title">Title</label>
-                <input id="title" name="title" class="form-control" type="text" required>
+                <h3>current title: ${title}</h3>
+                <label for="update-title">Title</label>
+                <input id="update-title" name="update-title" class="form-control" type="text">
             </div>
             <div class="form-group">
-                <label for="description">Description</label>
-                <textarea id="description" name="description" class="form-control" type="text" required></textarea>
+                <h3>current description: ${description}</h3>
+                <label for="update-description">description</label>
+                <input id="update-description" name="update-description" class="form-control" type="text">
             </div>
-            <input type="submit" class="btn btn-block btn-primary">
+            <input type="submit" class="btn btn-primary btn-block">
         </form>
     </div>
+    <%--update-form ends--%>
 </body>
 </html>

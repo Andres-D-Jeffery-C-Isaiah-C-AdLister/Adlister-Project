@@ -31,23 +31,11 @@ public class ListAdsDao implements Ads {
 
     @Override
     public void delete(Ad deleteAd) {
-        String query = "DELETE FROM ads WHERE VALUES id = ?";
-        try {
-            Config config = new Config();
-            Connection connection;
-            DriverManager.registerDriver(new Driver());
-            connection = DriverManager.getConnection(config.getUrl(), config.getUser(), config.getPassword());
-            PreparedStatement stmt = connection.prepareStatement(query, Statement.RETURN_GENERATED_KEYS);
+    }
 
-            stmt.setLong(1,  deleteAd.getId());
+    @Override
+    public void updateAd(Ad updatedAd, String updatedTile, String updatedDesc) {
 
-            stmt.executeUpdate();
-//            ResultSet rs = stmt.getGeneratedKeys();
-//            rs.next();
-//            return rs.getLong(1);
-        } catch (SQLException e) {
-            throw new RuntimeException("Error creating a new ad.", e);
-        }
     }
 
 

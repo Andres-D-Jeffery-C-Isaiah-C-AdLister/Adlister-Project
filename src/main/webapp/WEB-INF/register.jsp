@@ -6,7 +6,62 @@
         <jsp:param name="title" value="Register For Our Site!" />
     </jsp:include>
 
+
+    <style>
+        /*navbar starts*/
+        header li, a{
+            font-size: 16px;
+            color: white;
+            text-decoration: none;
+        }
+
+        header{
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 10%;
+            background-color: #041b31;
+        }
+
+        .logo{
+            cursor: pointer;
+            font-weight: bold;
+        }
+
+        nav{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .nav-links{
+            padding: 0;
+            margin: 0;
+            list-style: none;
+        }
+
+        .nav-links li{
+            display: inline-block;
+            padding: 0 20px;
+        }
+
+        header a:hover{
+            color: #5bc0de;
+            text-decoration: none;
+            transition: all .3s ease-in;
+        }
+
+        .logout{
+            padding: 5px 20px  ;
+            background-color: #5bc0de;
+            border:none;
+            border-radius: 50px;
+            cursor: pointer;
+        }
+        /*nav bar ends*/
+    </style>
 </head>
+
 
 <body id="rugImg">
 <jsp:include page="partials/navbar.jsp" />
