@@ -84,8 +84,9 @@
 <%--navbar ends--%>
 
 <body>
-            <h1>title: ${title}</h1>
+
             <h1>ad id: ${ad_id}</h1>
+            <h1>title: ${title}</h1>
             <h1>description: ${getDescription}</h1>
             <h1>posted by: ${getUserId}</h1>
 

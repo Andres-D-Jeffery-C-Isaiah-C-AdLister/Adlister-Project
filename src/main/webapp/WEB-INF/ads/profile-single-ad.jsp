@@ -73,29 +73,33 @@
         }
     </style>
 </head>
-<%--navbar starts--%>
-<header>
-    <a class="logo" href="">The Rug Plug</a>
-    <nav>
-        <ul class="nav-links">
-            <li><a href="/profile">My Profile</a></li>
-            <li><a href="/ads">Local Ads</a></li>
-        </ul>
-    </nav>
-    <a href="/logout" ><button class="logout">Logout</button></a>
-</header>
-<%--navbar ends--%>
 
 <body>
-    <h1>title: ${title}</h1>
+    <%--navbar starts--%>
+    <header>
+        <a class="logo" href="">The Rug Plug</a>
+        <nav>
+            <ul class="nav-links">
+                <li><a href="/profile">My Profile</a></li>
+                <li><a href="/ads">Local Ads</a></li>
+            </ul>
+        </nav>
+        <a href="/logout" ><button class="logout">Logout</button></a>
+    </header>
+    <%--navbar ends--%>
+
     <h1>ad id: ${ad_id}</h1>
+    <h1>title: ${title}</h1>
     <h1>description: ${getDescription}</h1>
     <h1>posted by: ${getUserId}</h1>
     <form  id="one"  class="itemId" action="/ads/delete-ad" method="post">
         <input class="itemId" type="text" name="deletead" value="${ad_id}">
-        <button class="delete-btn"  type="submit">delete</button>
     </form>
-    <button class="delete-btn"  form="one" type="submit">delete</button>
+    <form  id="two"  class="itemId" action="/ads/update" method="get">
+        <input class="itemId" type="text" name="updatead" value="${ad_id}">
+    </form>
+    <button class="update-btn"  form="two" type="submit">Update</button>
+    <button class="delete-btn"  form="one" type="submit">Delete</button>
 
 
 
