@@ -4,6 +4,7 @@
 <head>
     <jsp:include page="partials/head.jsp">
         <jsp:param name="title" value="Register For Our Site!" />
+
     </jsp:include>
 
 
@@ -105,6 +106,6 @@
         <input type="submit" class="btn btn-primary btn-block">
     </form>
 </div>
-
 </body>
 </html>
+

@@ -61,7 +61,7 @@
 
 </head>
 
-<body>
+<body class="rugImg4">
     <%--navbar starts--%>
     <header>
         <a class="logo" href="">The Rug Plug</a>

@@ -77,7 +77,7 @@
         }
     </style>
 </head>
-<body>
+<body id="rugImg2">
 <%--    <jsp:include page="/WEB-INF/partials/navbar.jsp" />--%>
 <header>
     <a class="logo" href="">The Rug Plug</a>

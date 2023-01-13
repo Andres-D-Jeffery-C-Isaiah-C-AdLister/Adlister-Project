@@ -83,7 +83,7 @@
 </header>
 <%--navbar ends--%>
 
-<body>
+<body class="rugImg4">
 
             <h1>ad id: ${ad_id}</h1>
             <h1>title: ${title}</h1>

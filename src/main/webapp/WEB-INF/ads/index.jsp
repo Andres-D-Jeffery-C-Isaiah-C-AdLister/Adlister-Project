@@ -123,7 +123,7 @@
 
     </style>
 </head>
-<body>
+<body class="rugImg4">
 <%--<jsp:include page="/WEB-INF/partials/navbar.jsp" />--%>
 <%--navbar starts--%>
 <header>
