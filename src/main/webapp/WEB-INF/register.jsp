@@ -65,7 +65,7 @@
 
 <body id="rugImg">
 <header>
-    <a class="logo" href="/ads">The Rug Plug</a>
+    <a class="logo" href="">The Rug Plug</a>
     <nav>
         <ul class="nav-links">
 
