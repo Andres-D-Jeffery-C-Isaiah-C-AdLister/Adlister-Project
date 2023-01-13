@@ -2,6 +2,7 @@ package com.codeup.adlister.controllers;
 
 import com.codeup.adlister.dao.DaoFactory;
 import com.codeup.adlister.models.User;
+import com.codeup.adlister.util.Password;
 import org.mindrot.jbcrypt.BCrypt;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -31,7 +32,7 @@ public class LoginServlet extends HttpServlet {
         //error messages are different if the user is found vs not found.
         if (user != null) {
             //created a boolean that sets true if the user's entered password and found user's hashed password match
-            boolean validAttempt = BCrypt.checkpw(password, user.getPassword());
+            boolean validAttempt = Password.check(password, user.getPassword());
             //if a user is found by the above if statement and passwords match, send to /profile
             if (validAttempt) {
                 request.getSession().setAttribute("user", user);

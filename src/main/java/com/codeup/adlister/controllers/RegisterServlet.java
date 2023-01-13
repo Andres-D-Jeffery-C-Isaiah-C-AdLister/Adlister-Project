@@ -52,7 +52,7 @@ public class RegisterServlet extends HttpServlet {
                     User userRecheck = DaoFactory.getUsersDao().findByUsername(username);
                     request.getSession().setAttribute("user", userRecheck);
                     request.getSession().setAttribute("userId", userRecheck.getId());
-                    response.sendRedirect("/profile");
+                    response.sendRedirect("/login");
                 } else {
                     //If the user inputs have an error, reload the page with an error msg
                     String msg = "Sorry, the entered passwords do not match.";

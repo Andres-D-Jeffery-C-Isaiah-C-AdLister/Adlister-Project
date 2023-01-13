@@ -1,10 +1,13 @@
-const password = document.getElementById('password')
-const background = document.getElementById('background')
+var passConfirm = function() {
+	if (document.getElementById("password").value ===
+		document.getElementById("confirm_password").value) {
+		document.getElementById("Message").style.color = "Green";
+		document.getElementById("Message").style.fontSize = "2vh";
+		document.getElementById("Message").innerHTML = "Passwords match!"
+	} else {
+		document.getElementById("Message").style.color = "Red";
+		document.getElementById("Message").style.fontSize = "2vh";
+		document.getElementById("Message").innerHTML = "Passwords do NOT match!"
+	}
+}
 
-password.addEventListener('input' , (e) => {
-	const input = e.target.value
-	const length = input.length
-	const blurValue = 20 - length *2
-	background.style.filter = `blur(${blurValue}px)`
-
-})
