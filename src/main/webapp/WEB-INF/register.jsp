@@ -64,7 +64,15 @@
 
 
 <body id="rugImg">
-<jsp:include page="partials/navbar.jsp" />
+<header>
+    <a class="logo" href="/ads">The Rug Plug</a>
+    <nav>
+        <ul class="nav-links">
+
+        </ul>
+    </nav>
+    <a href="" class=""></a>
+</header>
 <div class="container">
     <% String msg;
         if (session.getAttribute("msg") != null) {
