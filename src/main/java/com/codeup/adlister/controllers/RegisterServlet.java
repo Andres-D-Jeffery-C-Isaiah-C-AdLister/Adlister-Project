@@ -19,6 +19,14 @@ public class RegisterServlet extends HttpServlet {
         request.getSession().removeAttribute("msg");
         request.getSession().removeAttribute("username");
         request.getSession().removeAttribute("email");
+
+        if(request.getSession().getAttribute("username_register") == null) {
+            request.getSession().setAttribute("username_register","");
+        }
+        if(request.getSession().getAttribute("email_register") == null) {
+            request.getSession().setAttribute("email_register","");
+        }
+
         if (request.getSession().getAttribute("user") != null) {
             response.sendRedirect("/profile");
             return;
@@ -31,6 +39,12 @@ public class RegisterServlet extends HttpServlet {
         String email = request.getParameter("email");
         String password = request.getParameter("password");
         String passwordConfirmation = request.getParameter("confirm_password");
+
+        request.getSession().setAttribute("username_register", username);
+        request.getSession().setAttribute("email_register", email);
+        User user = DaoFactory.getUsersDao().findByUsername(username);//finds user in the database
+//        String Email = String.valueOf(DaoFactory.getUsersDao().findByEmail("Email"));
+
 
         User CheckUser = DaoFactory.getUsersDao().findByUsername(username);
         boolean inputHasErrors = Validate.checkInvalidRegistration(username, email, password, passwordConfirmation);
@@ -76,6 +90,7 @@ public class RegisterServlet extends HttpServlet {
                     if (!password.equals(passwordConfirmation)){
                         msg += "Password and Password Confirmation do not match. ";
                     }
+
                     request.getSession().setAttribute("msg", msg);
                     request.getSession().setAttribute("username", username);
                     request.getSession().setAttribute("email", email);

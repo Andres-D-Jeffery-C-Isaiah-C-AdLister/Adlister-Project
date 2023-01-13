@@ -45,24 +45,45 @@ public class UpdateProfileServlet extends HttpServlet {
             passwordConfirmation = user.getPassword();
         }
 
+
+
+        boolean inputHasErrors;
+
         User checkUser = DaoFactory.getUsersDao().findByUsername(username);
 
+        if (request.getSession().getAttribute("username") == username) {
+            inputHasErrors = username.isEmpty()
+                    || email.isEmpty()
+                    || password.isEmpty()
+                    || (! password.equals(passwordConfirmation));
+
+        } else {
+            inputHasErrors = username.isEmpty()
+                    || email.isEmpty()
+                    || password.isEmpty()
+                    || (! password.equals(passwordConfirmation)
+                    || checkUser != null);
+        }
+
+
+
         // validate input
-        boolean inputHasErrors = username.isEmpty()
-                || email.isEmpty()
-                || password.isEmpty()
-                || (! password.equals(passwordConfirmation)
-                || checkUser != null);
 
         if (inputHasErrors) {
             response.sendRedirect("/profile/update");
             return;
         }
 
+        if(!user.getPassword().equals(password)) {
+            password = Password.hash(password);
+        }
+
         // create and save a new user
-        User updateUser = new User(userId, username, email, Password.hash(password));
+        User updateUser = new User(userId, username, email, password);
         DaoFactory.getUsersDao().updateUser(updateUser);
         response.sendRedirect("/profile/update");
     }
+
+
 
 }
