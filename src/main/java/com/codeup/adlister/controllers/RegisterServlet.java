@@ -2,6 +2,7 @@ package com.codeup.adlister.controllers;
 
 import com.codeup.adlister.dao.DaoFactory;
 import com.codeup.adlister.models.User;
+import com.codeup.adlister.util.Validate;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -30,16 +31,17 @@ public class RegisterServlet extends HttpServlet {
         String email = request.getParameter("email");
         String password = request.getParameter("password");
         String passwordConfirmation = request.getParameter("confirm_password");
-        User user = DaoFactory.getUsersDao().findByUsername(username);//finds user in the database
-//        String Email = String.valueOf(DaoFactory.getUsersDao().findByEmail("Email"));
 
-        boolean inputHasErrors = username.isEmpty()// there is a username
-                || email.isEmpty()// there is an email
-                || password.isEmpty()//there is a password
-                || (!password.equals(passwordConfirmation));//password equals password Confirmation
+        User CheckUser = DaoFactory.getUsersDao().findByUsername(username);
+        boolean inputHasErrors = Validate.checkInvalidRegistration(username, email, password, passwordConfirmation);
 
-//this will run if the user is not in the database
-        if (user == null) {
+//                username.isEmpty()
+//                || email.isEmpty()
+//                || (!Validate.checkValidEmail(email))
+//                || password.isEmpty()
+//                || (!password.equals(passwordConfirmation));
+        // validate input
+        if (CheckUser == null) {
             //Run this if/else statement if no pre-existing user is found
             try {
 
@@ -55,7 +57,25 @@ public class RegisterServlet extends HttpServlet {
                     response.sendRedirect("/login");
                 } else {
                     //If the user inputs have an error, reload the page with an error msg
-                    String msg = "Sorry, the entered passwords do not match.";
+                    String msg = "";
+                    if (username.isEmpty()){
+                        msg += "Username is empty. ";
+                    }
+                    if (email.isEmpty()){
+                        msg += "Email is empty. ";
+                    }
+                    if (!Validate.checkValidEmail(email)){
+                        msg += "Email must have an '@'. ";
+                    }
+                    if (password.isEmpty()){
+                        msg += "Password is empty. ";
+                    }
+                    if (passwordConfirmation.isEmpty()){
+                        msg += "Password Confirmation is empty. ";
+                    }
+                    if (!password.equals(passwordConfirmation)){
+                        msg += "Password and Password Confirmation do not match. ";
+                    }
                     request.getSession().setAttribute("msg", msg);
                     request.getSession().setAttribute("username", username);
                     request.getSession().setAttribute("email", email);
