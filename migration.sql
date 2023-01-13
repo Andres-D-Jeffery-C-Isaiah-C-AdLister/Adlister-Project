@@ -44,7 +44,7 @@ select * from ads;
 select * from users;
 explain users;
 #
-# delete from users where id = 7 ;
-# select * from users;
+delete from users where id =22 ;
+select * from users;
 
 # if nothing is inputed it will take me to ads/create
