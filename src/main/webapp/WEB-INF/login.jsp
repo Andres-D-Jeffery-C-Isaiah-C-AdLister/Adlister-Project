@@ -80,7 +80,7 @@
 <body>
 <%--    <jsp:include page="/WEB-INF/partials/navbar.jsp" />--%>
 <header>
-    <a class="logo" href="/ads">The Rug Plug</a>
+    <a class="logo" href="">The Rug Plug</a>
     <nav>
         <ul class="nav-links">
 
