@@ -11,4 +11,14 @@ public class Validate {
         Boolean validEmail = (atCounter == 1);
         return validEmail;
     }
+
+    public static Boolean checkInvalidRegistration(String username, String email, String password, String passwordConfirmation){
+        return (
+                username.isEmpty() ||
+                email.isEmpty() ||
+                (!checkValidEmail(email)) ||
+                password.isEmpty() ||
+                (!password.equals(passwordConfirmation))
+        );
+    }
 }
