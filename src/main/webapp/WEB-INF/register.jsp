@@ -4,6 +4,7 @@
 <head>
     <jsp:include page="partials/head.jsp">
         <jsp:param name="title" value="Register For Our Site!" />
+
     </jsp:include>
 
 
@@ -64,7 +65,15 @@
 
 
 <body id="rugImg">
-<jsp:include page="partials/navbar.jsp" />
+<header>
+    <a class="logo" href="">The Rug Plug</a>
+    <nav>
+        <ul class="nav-links">
+
+        </ul>
+    </nav>
+    <a href="" class=""></a>
+</header>
 <div class="container">
     <% String msg;
         if (session.getAttribute("msg") != null) {
@@ -97,6 +106,6 @@
         <input type="submit" class="btn btn-primary btn-block">
     </form>
 </div>
-
 </body>
 </html>
+
