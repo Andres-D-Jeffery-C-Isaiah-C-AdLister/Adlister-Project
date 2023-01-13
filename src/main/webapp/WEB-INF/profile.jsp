@@ -179,7 +179,7 @@
                 <a href="/profile/update"><button class="sell">Update Profile</button></a>
             </div>
             <div class="box box-three">
-                <a href="/ads/create"><button class="sell">Sell</button></a>
+                <a href="/ads/create"><button class="sell">Create Ad</button></a>
             </div>
         </div>
 
